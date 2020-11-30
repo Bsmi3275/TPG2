@@ -42,7 +42,7 @@ class App {
                 {
                     type: "input",
                     message: "Your Office Number",
-                    name: 'officeno'
+                    name: 'officeNumber'
                 },
                 {
                     //then, the manager can select however and whichever employee templates
@@ -50,27 +50,26 @@ class App {
                     type: "list",
                     message: "Next, select and then type the information for your employee",
                     choices: ['Intern','Engineer', 'None additional'],
-                    name: 'addmemberprompt1'
+                    name: 'addmemberprompt'
                 }
             ])
             .then (
-                ({ name, id, email, officeno, addmemberprompt1 }) => {
-                    const manager = new Manager(name, id, email, officeno);
+                ({ name, id, email, officeNumber, addmemberprompt }) => {
+                    const manager = new Manager(name, id, email, officeNumber);
 
                     employees.push(manager)
                     console.log(employees)
 
-                    if (addmemberprompt1 === 'Engineer') {
+                    if (addmemberprompt === 'Engineer') {
                         console.log('New member successfully saved!')
                         this.engineerInfo();
                     } 
-                    else if (addmemberprompt1 === 'Intern') {
+                    else if (addmemberprompt === 'Intern') {
                         console.log('New member successfully saved!')
                         this.internInfo();
                     }
                     else {
-                        console.log('New member successfully saved!')
-                        this.employeeInfo();
+                        render(employees);
                     }
                 }
             
@@ -102,35 +101,29 @@ class App {
                     name: 'github'
                 },
                 {
-                    type: "input",
-                    message: "Engineer Office Number",
-                    name: 'officeno'
-                },
-                {
                     type: "list",
                     message: "Next, select and then type the information for your employee",
                     choices: ['Intern','Engineer', 'None additional'],
-                    name: 'addmemberprompt1'
+                    name: 'addmemberprompt'
                 }
             ])
             .then (
-                ({ name, id, email, github, officeno, addmemberprompt1 }) => {
-                    const engineer = new Engineer(name, id, email, github, officeno);
+                ({ name, id, email, github, addmemberprompt }) => {
+                    const engineer = new Engineer(name, id, email, github);
 
                     employees.push(engineer)
                     console.log(employees)
 
-                    if (addmemberprompt1 === 'Engineer') {
+                    if (addmemberprompt === 'Engineer') {
                         console.log('New member successfully saved!')
                         this.engineerInfo();
                     } 
-                    else if (addmemberprompt1 === 'Intern') {
+                    else if (addmemberprompt === 'Intern') {
                         console.log('New member successfully saved!')
                         this.internInfo();
                     }
                     else {
-                        console.log('New member successfully saved!')
-                        this.employeeInfo();
+                        render(employees);
                     }
                 }
             )
@@ -159,11 +152,6 @@ class App {
                 },
                 {
                     type: "input",
-                    message: "Intern Office Number",
-                    name: 'officeno'
-                },
-                {
-                    type: "input",
                     message: "Which school is the intern currently enrolled in?",
                     name: 'school'
                 },
@@ -171,86 +159,31 @@ class App {
                     type: "list",
                     message: "Next, select and then type the information for your employee",
                     choices: ['Intern','Engineer', 'None additional'],
-                    name: 'addmemberprompt1'
+                    name: 'addmemberprompt'
                 }
             ])
             .then (
-                ({ name, id, email, school, officeno, addmemberprompt1 }) => {
-                    const intern = new Intern(name, id, email, school, officeno);
+                ({ name, id, email, school, addmemberprompt }) => {
+                    const intern = new Intern(name, id, email, school);
 
                     employees.push(intern)
                     console.log(employees)
 
-                    if (addmemberprompt1 === 'Engineer') {
+                    if (addmemberprompt === 'Engineer') {
                         console.log('New member successfully saved!')
                         this.engineerInfo();
                     } 
-                    else if (addmemberprompt1 === 'Intern') {
+                    else if (addmemberprompt === 'Intern') {
                         console.log('New member successfully saved!')
                         this.internInfo();
                     }
                     else {
-                        console.log('New member successfully saved!')
-                        this.employeeInfo();
+                        render(employees);
                     }
                 }
             )
     }
 
-    employeeInfo() {
-        inquirer
-            .prompt ([
-                {
-                    //This is for non-interns and non-engineers
-                    type: "input",
-                    message: "Employee name",
-                    name: 'name'
-                },
-                {
-                    type: "input",
-                    message: "Employee ID",
-                    name: 'id'
-                },
-                {
-                    type: "input",
-                    message: "Employee E-mail",
-                    name: 'email'
-                },
-                {
-                    type: "input",
-                    message: "Employee Office Number",
-                    name: 'officeno'
-                },
-                {
-                    type: "list",
-                    message: "Next, select and then type the information for your employee",
-                    choices: ['Intern','Engineer', 'None additional'],
-                    name: 'addmemberprompt1'
-                }
-            ])
-            .then (
-                ({ name, id, email, officeno, addmemberprompt1 }) => {
-                    const employee = new Employee (name, id, email, officeno);
-
-                    employees.push(employee)
-                    console.log(employees)
-
-                    if (addmemberprompt1 === 'Engineer') {
-                        console.log('New member successfully saved!')
-                        this.engineerInfo();
-                    } 
-                    else if (addmemberprompt1 === 'Intern') {
-                        console.log('New member successfully saved!')
-                        this.internInfo();
-                    }
-                    else {
-                        console.log('New member successfully saved!')
-                        this.employeeInfo();
-                    }
-                }
-            
-            )
-    }
 }
 
 const app = new App();

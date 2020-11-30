@@ -2,8 +2,8 @@
 const Employee = require("./Employee");
 
 class Intern extends Employee {
-    constructor(name, id, email, officeno, school) {
-        super(name, id, email, officeno);
+    constructor(name, id, email, school) {
+        super(name, id, email);
         this.school = school;
     }
 
@@ -12,7 +12,7 @@ class Intern extends Employee {
     }
 
     getRole() {
-        return 'Intern';
+        return 'Intern'
     }
 
 }
