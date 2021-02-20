@@ -27,6 +27,8 @@
 ### Installation: 
 #### <p>I go into details throughout the javascript comments about difficulties debugging with mistakes and corrections I made. Per the video, open 'app.js' in an integrated terminal. Enter the 'npm i' command, then the 'node app.js' command. Enter yourself as the manager first. ID must be one digit, office number must be 9 digits. It would be best to have a 1 digit ID and an email ending in '.com'. When done (by selecting 'None additional' after you have entered all the members of the team you wanted to), an index file should be generated within the output folder. </p>
 
+![showoff](assets/showoff.gif)
+
 ### Usage: 
 #### <p>n/A</p>
 
